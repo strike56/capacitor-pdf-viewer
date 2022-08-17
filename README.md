@@ -13,24 +13,32 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`open(...)`](#open)
+* [`close()`](#close)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### open(...)
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+open(params: { url: string; top?: number; }) => Promise<void>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+| Param        | Type                                        |
+| ------------ | ------------------------------------------- |
+| **`params`** | <code>{ url: string; top?: number; }</code> |
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+--------------------
+
+
+### close()
+
+```typescript
+close() => Promise<void>
+```
 
 --------------------
 

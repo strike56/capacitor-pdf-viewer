@@ -1,3 +1,4 @@
 export interface PDFViewerPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  open(params: { url: string, top?: number }): Promise<void>;
+  close(): Promise<void>;
 }
