@@ -1,6 +1,5 @@
 package ch.nadlo.oss.capacitor.pdf_viewer;
 
-import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
@@ -9,14 +8,29 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "PDFViewer")
 public class PDFViewerPlugin extends Plugin {
 
-    private PDFViewer implementation = new PDFViewer();
+    private final PDFViewer implementation = new PDFViewer();
+
+    @Override
+    public void load() {
+        super.load();
+
+        implementation.setActivity(getActivity());
+    }
 
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
+    public void open(PluginCall call) {
+        String url = call.getString("url");
+        Integer top = call.getInt("top", 0);
 
-        JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
-        call.resolve(ret);
+        if (url != null && !url.isEmpty()) {
+            implementation.openViewer(url, top);
+        }
+
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void close(PluginCall call) {
+        call.resolve();
     }
 }
