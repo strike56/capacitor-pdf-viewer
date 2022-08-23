@@ -58,5 +58,4 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation 'com.github.afreakyelf:Pdf-Viewer:v1.0.8'
-    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
 }

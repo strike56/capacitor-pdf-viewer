@@ -19,7 +19,7 @@ public class PDFViewer {
     public void openViewer(String url, Integer topOffset) {
         // load PDF
         activeIntent = PdfViewerActivity.Companion.launchPdfFromUrl(
-                this.activity.getApplicationContext(),
+                this.activity.getBaseContext(),
                 url,
                 "pdf title",
                 "",
@@ -28,11 +28,11 @@ public class PDFViewer {
 
         this.activity.startActivity(activeIntent);
 
-        ActionBar actionBar = this.activity.getSupportActionBar();
-
-        if (actionBar != null) {
-            actionBar.hide();
-        }
+//        ActionBar actionBar = this.activity.getSupportActionBar();
+//
+//        if (actionBar != null) {
+//            actionBar.hide();
+//        }
     }
 
     public void close() {
