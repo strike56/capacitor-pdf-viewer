@@ -1,43 +1,34 @@
 package ch.nadlo.oss.capacitor.pdf_viewer;
 
 import android.content.Intent;
-import android.util.Log;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.getcapacitor.Bridge;
 import com.rajat.pdfviewer.PdfViewerActivity;
 
 public class PDFViewer {
-    private AppCompatActivity activity = null;
+    private Bridge bridge = null;
     private Intent activeIntent = null;
 
-    public void setActivity(AppCompatActivity activity) {
-        this.activity = activity;
+    public void setBridge(Bridge bridge) {
+        this.bridge = bridge;
     }
 
-    public void openViewer(String url, Integer topOffset) {
+    public void openViewer(String url, String title) {
         // load PDF
-        activeIntent = PdfViewerActivity.Companion.launchPdfFromUrl(
-                this.activity.getBaseContext(),
+        Intent activeIntent = PdfViewerActivity.Companion.launchPdfFromUrl(
+                this.bridge.getContext(),
                 url,
-                "pdf title",
+                title,
                 "",
                 false
         );
 
-        this.activity.startActivity(activeIntent);
-
-//        ActionBar actionBar = this.activity.getSupportActionBar();
-//
-//        if (actionBar != null) {
-//            actionBar.hide();
-//        }
+        this.bridge.getActivity().startActivity(activeIntent);
     }
 
     public void close() {
         if (activeIntent != null) {
-            this.activity.onBackPressed();
+            this.bridge.getActivity().finish();
 
             activeIntent = null;
         }

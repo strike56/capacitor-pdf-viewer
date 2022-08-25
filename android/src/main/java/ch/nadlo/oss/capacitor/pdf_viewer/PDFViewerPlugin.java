@@ -14,16 +14,16 @@ public class PDFViewerPlugin extends Plugin {
     public void load() {
         super.load();
 
-        implementation.setActivity(getActivity());
+        implementation.setBridge(this.getBridge());
     }
 
     @PluginMethod
     public void open(PluginCall call) {
         String url = call.getString("url");
-        Integer top = call.getInt("top", 0);
+        String title = call.getString("title", "");
 
         if (url != null && !url.isEmpty()) {
-            implementation.openViewer(url, top);
+            implementation.openViewer(url, title);
         }
 
         call.resolve();
@@ -31,6 +31,8 @@ public class PDFViewerPlugin extends Plugin {
 
     @PluginMethod
     public void close(PluginCall call) {
+        // implementation.close();
+
         call.resolve();
     }
 }
