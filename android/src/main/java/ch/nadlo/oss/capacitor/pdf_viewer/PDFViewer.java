@@ -1,6 +1,10 @@
 package ch.nadlo.oss.capacitor.pdf_viewer;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.view.View;
 
 import com.getcapacitor.Bridge;
 import com.rajat.pdfviewer.PdfViewerActivity;
