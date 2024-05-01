@@ -31,7 +31,7 @@ public class PDFViewerPlugin extends Plugin {
 
     @PluginMethod
     public void close(PluginCall call) {
-        // implementation.close();
+        implementation.close();
 
         call.resolve();
     }
