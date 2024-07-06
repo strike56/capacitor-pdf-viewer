@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
@@ -27,15 +29,19 @@ public class PDFViewer {
             app.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
                 @Override
                 public void onActivityCreated(@NonNull Activity activity, Bundle savedInstanceState) {
-                    if (activity.toString().startsWith("com.rajat.pdfviewer.PdfViewerActivity")) {
+                    if (activity.getClass().getName().equals(PdfViewerActivity.class.getName())) {
                         activeActivities.add(activity);
+                        // Add FLAG_KEEP_SCREEN_ON when PdfViewerActivity is created
+                        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                     }
                 }
 
                 @Override
                 public void onActivityDestroyed(@NonNull Activity activity) {
-                    if (activity.toString().startsWith("com.rajat.pdfviewer.PdfViewerActivity")) {
+                    if (activity.getClass().getName().equals(PdfViewerActivity.class.getName())) {
                         activeActivities.remove(activity);
+                        // Clear FLAG_KEEP_SCREEN_ON when PdfViewerActivity is destroyed
+                        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                     }
                 }
 
