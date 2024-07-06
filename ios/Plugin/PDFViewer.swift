@@ -19,13 +19,19 @@ import PDFKit
         }
         
         DispatchQueue.main.async {
-            self.pdfView.document = document
-            
             if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
                 self.pdfView.frame = rootViewController.view.bounds;
                 self.pdfView.frame.origin.y = CGFloat(top);
-                
+                // Adjust the height to account for the top padding
+                self.pdfView.frame.size.height = rootViewController.view.bounds.height - CGFloat(top)
+
                 rootViewController.view.bringSubviewToFront(self.pdfView);
+                
+                // make PDF fit full width
+                self.pdfView.autoScales = true
+                
+                self.pdfView.document = document
+
             }
         }
     }
