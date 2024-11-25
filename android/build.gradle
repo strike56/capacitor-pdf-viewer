@@ -8,8 +8,10 @@ ext {
 buildscript {
     repositories {
         google()
-        jcenter()
-        maven { url "https://jitpack.io" }
+        mavenCentral()
+//        jcenter()
+//        maven { url "https://jitpack.io" }
+//        maven { url "http://jcenter.bintray.com" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.1'
@@ -46,8 +48,9 @@ android {
 repositories {
     google()
     mavenCentral()
-    jcenter()
-    maven { url "https://jitpack.io" }
+//    jcenter()
+//    maven { url "https://jitpack.io" }
+//    maven { url "http://jcenter.bintray.com" }
 }
 
 
